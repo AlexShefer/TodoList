@@ -64,6 +64,14 @@
     border: none;
     outline: none;
 }
+.todos__item {
+    font-size: 1.25rem;
+    margin-bottom: 1em;
+    display: flex;
+    gap: 1em;
+    align-items: center;
+    cursor: pointer;
+}
 
 .todos__container__footer {
     display: flex;

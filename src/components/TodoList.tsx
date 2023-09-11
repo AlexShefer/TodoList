@@ -95,20 +95,27 @@ export default function TodoList() {
             return 0; // You can modify this to suit your sorting criteria
         });
 
-        content = filteredTasks(sortedData ?? []).map((task) => {
-            const isEditing = editingTaskId === task.id;
+        const displayedTask = filteredTasks(sortedData ?? []);
 
-            return (
-                <TaskComponent
-                    onClick={() => handleChangeStatus(task)}
-                    key={task.id}
-                    task={task}
-                    isEditing={isEditing}
-                    openEdit={openEdit}
-                    closeEdit={closeEdit}
-                />
+        content =
+            displayedTask.length > 0 ? (
+                displayedTask.map((task) => {
+                    const isEditing = editingTaskId === task.id;
+
+                    return (
+                        <TaskComponent
+                            onClick={() => handleChangeStatus(task)}
+                            key={task.id}
+                            task={task}
+                            isEditing={isEditing}
+                            openEdit={openEdit}
+                            closeEdit={closeEdit}
+                        />
+                    );
+                })
+            ) : (
+                <li className={styles.todos__item}>No tasks available.</li>
             );
-        });
     } else {
         content = <li className={styles.todos__item}>No tasks available.</li>;
     }
@@ -159,10 +166,7 @@ export default function TodoList() {
                         placeholder="What need to be done?"
                     />
                 </form>
-                <ul>
-                    <li>Tasks will be here</li>
-                    {content}
-                </ul>
+                <ul>{content}</ul>
 
                 <div className={styles.todos__container__footer}>
                     <p> {description(filterTask)}</p>
