@@ -14,7 +14,7 @@ import { Task, NewTask } from "../types/types";
 
 export default function TodoList() {
     const { data, isLoading, error } = useFetchTasksQuery("tasks");
-
+    console.log(data);
     // State for the new task input
     const [newTask, setNewTask] = useState<NewTask>({
         task: "",
@@ -114,18 +114,28 @@ export default function TodoList() {
     }
 
     const description = (filterRequest: string) => {
-        switch (filterRequest) {
-            case "All":
-            case "Active":
-                // return `${data.filter((task: Task) => !task.done)} left task`;
-                return "All";
-            case "Completed":
-                // return `${
-                //     data.filter((task: Task) => task.done).length
-                // } completed task`;
-                return "Completed";
-            default:
-                return "0 tasks";
+        if (data) {
+            switch (filterRequest) {
+                case "All":
+                case "Active": {
+                    const activeTask = data.filter((task: Task) => !task.done);
+                    return `${activeTask.length} left ${
+                        activeTask.length > 1 ? "task" : "tasks"
+                    }`;
+                }
+
+                case "Completed": {
+                    const completedTask = data.filter(
+                        (task: Task) => task.done
+                    );
+                    return `${completedTask.length} completed ${
+                        completedTask.length > 1 ? "task" : "tasks"
+                    }`;
+                }
+
+                default:
+                    return "0 tasks";
+            }
         }
     };
 
