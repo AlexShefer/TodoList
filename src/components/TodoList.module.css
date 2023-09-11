@@ -1,0 +1,85 @@
+.todos {
+    width: 100vw;
+    min-height: 100vh;
+    background-color: grey;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.todos__header {
+    font-size: 6.5rem;
+    font-weight: 300;
+    color: pink;
+}
+.todos__container {
+    background: #ffffff;
+    border: 1px solid #303030;
+    padding: 1.5rem;
+    position: relative; /* Add relative positioning */
+    width: 95%;
+    max-width: 500px;
+}
+
+.todos__container::before {
+    content: "";
+    position: absolute;
+    top: 100%; /* Adjust the vertical position */
+    left: 5%; /* Adjust the horizontal position */
+    width: 90%; /* Adjust the width of the card */
+    height: 20px; /* Same height as the container */
+    background-color: #ffffff;
+    border: 1px solid #303030;
+}
+
+.todos__container::after {
+    content: "";
+    position: absolute;
+    top: 100%; /* Adjust the vertical position */
+    left: 2.5%; /* Adjust the horizontal position */
+    width: 95%; /* Adjust the width of the card */
+    height: 10px; /* Same height as the container */
+    background-color: #ffffff;
+    border: 1px solid #303030;
+}
+
+.todos__container__form {
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1em;
+    margin-bottom: 1em;
+    border-bottom: 1px solid #303030;
+}
+
+.todos__container__form__input {
+    border: none;
+    font-size: 1.25rem;
+    padding: 0.5em;
+    width: 100%;
+}
+
+.todos__container__form__input {
+    border: none;
+    outline: none;
+}
+
+.todos__container__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.todos__container__footer_button {
+    padding: 0.25em;
+    border-radius: 3px;
+    border: 1 solid #303030;
+    outline: none;
+}
+
+.todos__container__footer__filter {
+    display: flex;
+    gap: 0.25em;
+}
