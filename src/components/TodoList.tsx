@@ -14,7 +14,7 @@ import { Task, NewTask } from "../types/types";
 
 export default function TodoList() {
     const { data, isLoading, error } = useFetchTasksQuery("tasks");
-    console.log(data);
+
     // State for the new task input
     const [newTask, setNewTask] = useState<NewTask>({
         task: "",
@@ -168,19 +168,31 @@ export default function TodoList() {
                     <p> {description(filterTask)}</p>
                     <div className={styles.todos__container__footer__filter}>
                         <button
-                            className={styles.todos__container__footer_button}
+                            className={
+                                filterTask === "All"
+                                    ? styles.todos__container__footer_active_button
+                                    : styles.todos__container__footer_button
+                            }
                             onClick={() => setFilterTask("All")}
                         >
                             All
                         </button>
                         <button
-                            className={styles.todos__container__footer_button}
+                            className={
+                                filterTask === "Active"
+                                    ? styles.todos__container__footer_active_button
+                                    : styles.todos__container__footer_button
+                            }
                             onClick={() => setFilterTask("Active")}
                         >
                             Active
                         </button>
                         <button
-                            className={styles.todos__container__footer_button}
+                            className={
+                                filterTask === "Completed"
+                                    ? styles.todos__container__footer_active_button
+                                    : styles.todos__container__footer_button
+                            }
                             onClick={() => setFilterTask("Completed")}
                         >
                             Completed
@@ -190,7 +202,7 @@ export default function TodoList() {
                         className={styles.todos__container__footer_button}
                         onClick={handleClearTaskList}
                     >
-                        Clear Completed
+                        Clear
                     </button>
                 </div>
             </div>

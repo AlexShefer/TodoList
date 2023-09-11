@@ -72,14 +72,19 @@
     gap: 0.5em;
 }
 
-.todos__container__footer_button {
+.todos__container__footer_button .todos__container__footer_active_button {
     padding: 0.25em;
     border-radius: 3px;
-    border: 1 solid #303030;
     outline: none;
+    height: 100%;
 }
 
 .todos__container__footer__filter {
     display: flex;
     gap: 0.25em;
+}
+
+.todos__container__footer_active_button {
+    color: #ffffff;
+    background-color: #303030;
 }
